@@ -5,7 +5,7 @@ export interface Pessoa {
     nome: string 
     email: string
     senha: string
-    idade: string
+    idade: number
     foto: string
     categorias_favoritos: CategoriaEnum[]
     generos_favoritos: GeneroEnum[]
