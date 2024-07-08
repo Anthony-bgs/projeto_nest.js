@@ -1,11 +1,12 @@
 import { Connection } from 'mongoose';
-import { CatSchema } from './schemas/cat.schema';
+import { PessoaSchema } from './pessoa.schema';
 import { Constantes } from 'src/constantes';
 
-export const catsProviders = [
+
+export const PessoaProvider = [
   {
-    provide: 'CAT_MODEL',
-    useFactory: (connection: Connection) => connection.model('Cat', CatSchema),
+    provide: Constantes.Modelo_P,
+    useFactory: (connection: Connection) => connection.model('Pessoa', PessoaSchema),
     inject: [Constantes.dataBaseConnection],
   },
 ];
