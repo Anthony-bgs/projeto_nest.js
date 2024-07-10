@@ -20,4 +20,9 @@ export class PessoaService {
     return this.PessoaModel.find().exec();
   }
   
+  async findID(_id:string): Promise<Pessoa> {
+    return this.PessoaModel.findById(_id).exec();
+  }
+
+
 }
