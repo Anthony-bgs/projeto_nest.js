@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from "@nestjs/common";
+import { Body, Controller, Get, Param, Post } from "@nestjs/common";
 import { PessoaService } from "./pessoa.service";
 import { Pessoa } from "./pessoa.interface";
 import { PessoaDto } from "./pessoa.dto";
@@ -7,9 +7,9 @@ import { PessoaDto } from "./pessoa.dto";
 export class PessoaController {
   constructor(private readonly pessoaService: PessoaService) { }
   
-  @Get("/findID")
-  async findID(): Promise<Pessoa> {
-    return this.pessoaService.findID()
+  @Get("/:id")
+  async findID(@Param("id") id:string) : Promise<Pessoa> {
+    return this.pessoaService.findID(id)
   }
 
   @Post("/criar")
