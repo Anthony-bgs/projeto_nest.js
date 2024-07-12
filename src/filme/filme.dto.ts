@@ -10,4 +10,9 @@ export interface FilmeDto extends Document{
     categorias: CategoriaEnum[]
 }
 
+export interface FilmeAutomaticoDto extends Document{
+    nomes: string[]
+    categorias: CategoriaEnum[]
+}
+
    

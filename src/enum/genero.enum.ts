@@ -1,5 +1,7 @@
-export enum GeneroEnum{
-    acao = "ação",
-    comedia = "comédia",
+export enum GeneroEnum {
+    action = "ação",
+    comedy = "comédia",
     terror = "terror",
+    adventure = "aventura", 
+    fantasy = "fantasia",
 }
