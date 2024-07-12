@@ -36,7 +36,7 @@ export class FilmeService {
 	}
 	async deleteManyByName(nomes: string[]): Promise<void> {
 		nomes.forEach(async nome => {
-			var contador = await this.FilmeModel.countDocuments({ nome: nome })
+			var contador = await this.FilmeModel.countDocuments({ nome: nome.toLowerCase() })
 			while (contador > 1) {
 				await this.FilmeModel.findOneAndDelete({ nome: nome })
 				contador--
@@ -73,10 +73,15 @@ export class FilmeService {
 					capa: data.Poster,
 					avaliacao: data.Ratings
 				}
+				
+				try {
+					const createdFilme = new this.FilmeModel(novoFilme);					
+					//salva no banco de dados o novo objeto de filme
+					await createdFilme.save();
+				} catch (error) {
+					console.log({nome: data.Title, generos: data.Genre});
+				}
 
-				//salva no banco de dados o novo objeto de filme
-				const createdFilme = new this.FilmeModel(novoFilme);
-				createdFilme.save();
 			} else {
 				console.log("Esse titulo ja cadastrado ===> ", nome);
 			}
